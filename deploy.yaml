@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hungry-horse
+  namespace: app-bar-prd
+  labels:
+    app: hungry-horse
+    env: prd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hungry-horse
+      env: prd
+  template:
+    metadata:
+      labels:
+        app: hungry-horse
+        env: prd
+    spec:
+      containers:
+      - name: webserver-simple
+        image: docker.io/kostiscodefresh/gitops-simple-app:v1.0
+        ports:
+        - containerPort: 8080
