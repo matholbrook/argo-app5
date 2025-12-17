@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: paris
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Paris Apps Project
+  sourceRepos:
+    - https://github.com/matholbrook/argo-*
+  sourceNamespaces:
+    - argocd-apps
+  destinations:
+    - namespace: app-xyz-prd
+      server: https://kubernetes.default.svc
+      name: in-cluster
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
+  namespaceResourceWhitelist:
+    - group: apps
+      kind: Deployment
+    - group: apps
+      kind: ReplicaSet
+    - group: ''
+      kind: Pod
+    - group: ''
+      kind: Service
+  orphanedResources:
+    warn: false

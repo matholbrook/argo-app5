@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-app5
+  namespace: argocd
+  labels:
+    dept: broking
+    app: argo-app5
+spec:
+  project: paris
+  source:
+    repoURL: https://github.com/matholbrook/argo-app5
+    targetRevision: HEAD # or a specific branch/tag
+    path: app/
+  destination:
+    server: https://kubernetes.default.svc # Use appropriate server URL
+    namespace: app-xyz-prd
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
