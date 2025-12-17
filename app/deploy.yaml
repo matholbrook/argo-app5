@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hungry-horse
-  namespace: app-bar-prd
+  namespace: app-xyz-prd
   labels:
     app: hungry-horse
     env: prd
