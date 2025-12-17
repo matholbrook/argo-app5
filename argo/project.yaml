@@ -10,7 +10,7 @@ spec:
   sourceRepos:
     - https://github.com/matholbrook/argo-*
   sourceNamespaces:
-    - argocd-apps
+    - argocd
   destinations:
     - namespace: app-xyz-prd
       server: https://kubernetes.default.svc
